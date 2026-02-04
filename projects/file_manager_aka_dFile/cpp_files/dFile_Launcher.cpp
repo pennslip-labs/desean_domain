@@ -1,6 +1,6 @@
 // main entry point to the program. creating the frame,
 // and setting global themes
-#include "dFile_Frame.h"
+#include "dFile_Frame.hpp"
 #include <iostream>
 #include <wx/cmdline.h>
 
