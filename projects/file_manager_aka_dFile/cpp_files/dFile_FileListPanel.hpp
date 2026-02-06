@@ -41,9 +41,14 @@ class dFile_FileListPanel : public wxPanel {
         setting up the layout, and binding events.*/
         dFile_FileListPanel(wxWindow* parent, wxWindowID id = wxID_ANY);
 
-        // directory operations
-        void LoadDirectory(const wxString& path); // uses the directory scanner in dFrame
-        void RefreshList(); // refreshes the wxListCtrl contents as well as column width
+        // -- directory operations
+
+        /*uses the directory scanner in dFrame to load file meta data
+        into the listctrl object for the UI. if an item is a directory, 
+        ' >' will be tacked on to the end of the file name. while the 
+        file type will be empty*/ 
+        void LoadDirectory(const wxString& path); 
+        void RefreshList(bool load); // refreshes the wxListCtrl contents as well as column width (use this once dir/list is already loaded onto the screen!!!)
 
         // sorting
         void SortByColumn(int columnIndex, bool ascending); // used to change sorting choice
@@ -53,8 +58,9 @@ class dFile_FileListPanel : public wxPanel {
         int GetSelectedIndex() const; // extracts the index of the file withen the vector
         fMetaData GetSelectedFile() const; // used to get the metadata of a selected file
 
-        // accessors
+        // getters
         wxString GetCurrentPath() const { return currentPath; } // gets the current path from the dir scanner in dframe
+
 };
 
 #endif

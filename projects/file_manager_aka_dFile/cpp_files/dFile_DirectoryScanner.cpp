@@ -2,7 +2,9 @@
 // and resturns a vector of dFile_Info 
 
 #include "dFile_DirectoryScanner.hpp"
-
+#include <iostream>
+#include "dFile_wxDataFormat.hpp"
+#include "Symlink_Check.hpp"
 
 using namespace std;
 
@@ -37,18 +39,22 @@ void dFile_DirectoryScanner::rmv_oldest_path_from_history() {
         past_dir_paths.erase(past_dir_paths.begin());
     }
 }
-
 bool dFile_DirectoryScanner::scan_dir() {
+    // expand the path so everything can use it
+    wxString expandedDir = expand_file_paths(dir_path);
+
     // if the current path is not already in the
     // history, add it
-    if (!check_in_history(dir_path)) {
-        past_dir_paths.push_back(dir_path);
+    if (!check_in_history(expandedDir)) {
+        past_dir_paths.push_back(expandedDir);
     }
     // ensure that file_vect is clear for each scan
     file_vect.clear();
 
+    cout << "attempting to open directory \"" + expandedDir.ToStdString() + "\"..." << endl;
+
     // attempt to open the current directory
-    wxDir open_dir(dir_path);
+    wxDir open_dir(expandedDir);
     if (!open_dir.IsOpened()) return false;
     else { // safe gaurding the rest of the code for sanity
         // canonical wxWidget pattern for iterating files. using GetFirst() and
@@ -57,14 +63,50 @@ bool dFile_DirectoryScanner::scan_dir() {
         // if anything exists in current directory, get the first file, no wildcard filters, and include files & dir (no hidden stuff)
         bool contin = open_dir.GetFirst(&wxTempStr, wxEmptyString, wxDIR_DEFAULT);
         while (contin) { // main loop for all files/folders in the directory
-            // using wxFileName to get the file name, extension, and type
-            wxFileName fn (wxTempStr);
+            // skip . and .. directory entries
+            if (wxTempStr == "." || wxTempStr == "..") {
+                contin = open_dir.GetNext(&wxTempStr);
+                continue;
+            }
+            
+            // using wxFileName to get the file name, extension, and type.
+            // though it requires the full file path to acquire its metadata
+            wxString full_path_to_file = expandedDir + wxFileName::GetPathSeparator() + wxTempStr;
+            wxFileName fn(full_path_to_file);
+
+            // if symlink is encountered, will be skipped
+            if (IsSymlink(full_path_to_file.ToStdString())) {
+                cout << "\"" + wxTempStr.ToStdString() + "\" was detected as a symlink. skipping..." << endl;
+                contin = open_dir.GetNext(&wxTempStr);
+                continue;
+            }
+
+            // ensuring that the correct time is being pulled
+            wxDateTime modifTime = fn.GetModificationTime(); 
+            time_t ts = 0;
+            if (modifTime.IsValid()) ts = modifTime.GetTicks();
+            // fallback incase of being invalid
+            else {
+                cout << "modification time for \"" + wxTempStr + "\" is invalid" << endl;
+                // will be formatted as N\A in the string formatter
+            } 
+
+            // ensuring that file size can be retrieved safely as well
+            uintmax_t file_size = 0;
+            if (!wxDirExists(full_path_to_file)) { // only grab the file size for files
+                wxULongLong size = fn.GetSize();
+                if (size != wxInvalidSize) file_size = size.GetValue();
+                else cout << "Invalid size for \"" + wxTempStr.ToStdString() + "\", setting to 0" << endl;
+            }
+
+            // now building the fMetaData struct
             fMetaData tmpMD = {
-                fn.GetFullName().ToStdString(),         // get the file name
+                wxTempStr.ToStdString(),                // get the file name
                 fn.GetExt().ToStdString(),              // grab the extension
-                fn.GetSize().GetValue(),                // get the file size (unitmax_t)
-                fn.GetModificationTime().GetTicks(),    // grab the modification time
-                fn.IsDir()                              // check if it's a directory
+                file_size,                              // get the file size (unitmax_t)
+                ts,                                     // grab the modification time
+                fn.IsDir(),                             // check if it's a directory
+                false                                   // check if it's a symlink
             };
 
             // push the new metadata into the meta vector
@@ -82,15 +124,16 @@ bool dFile_DirectoryScanner::scan_dir() {
             std::time_t timeStamp; 
             std::time(&timeStamp);
             fMetaData tmpMD = { // pseudo file detailing thats theres nothing in the dir
-                "current directory has no files...",
+                "current directory has nothing...",
                 "foo",
                 0,
                 timeStamp,
+                false,
                 false
             };
 
             file_vect.push_back(tmpMD);
-            return false;
+            return true;
         } 
     }
     return true;

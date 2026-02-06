@@ -1,5 +1,5 @@
-#ifndef DFILE_DEFSIZE_CPP
-#define DFILE_DEFSIZE_CPP
+#ifndef DFILE_DEFSIZE_HPP
+#define DFILE_DEFSIZE_HPP
 
 #include "wx/wx.h"
 #include "wx/panel.h"

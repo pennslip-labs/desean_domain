@@ -37,8 +37,9 @@ class dFile_Launcher : public wxApp {
             
             cout << "Using directory: " << starting_directory << endl;
 
-            dFile_Frame main_app(starting_directory);
-            main_app.dFile_Frame::get_main_frame()->Show(true);
+            dFile_Frame* main_app = new dFile_Frame(starting_directory);
+            main_app->get_main_frame()->Layout();
+            main_app->get_main_frame()->Show();
 
             cout << "dFile Launcher has in fact -- been launched." << endl;
 

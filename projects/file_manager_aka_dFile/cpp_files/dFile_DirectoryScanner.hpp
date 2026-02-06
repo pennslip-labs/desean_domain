@@ -14,18 +14,20 @@
 struct fMetaData {         // used to contain file metadata within the file_map
     std::string name;      // file name
     std::string type;      // file type
-    uintmax_t size;        // file suze
+    uintmax_t size;        // file size
     std::time_t modified;  // file modification date
     bool isDirectory;      // is a directory or not
+    bool isLink;           // is a link or not
 };
 
-class dFile_DirectoryScanner : public wxDir {
+class dFile_DirectoryScanner {
     private:
         wxString dir_path;                    //holds the current directory
         std::vector<wxString> past_dir_paths; //contains prev directories for back navigation
         std::vector<fMetaData> file_vect;     //list of files/dirs in current directory
 
     public:
+        // explicit consrtuctor to ensure unwanted conversions dont occur
         explicit dFile_DirectoryScanner(const wxString &path);
 
         // getters
