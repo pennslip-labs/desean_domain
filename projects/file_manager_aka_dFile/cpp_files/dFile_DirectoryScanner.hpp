@@ -1,5 +1,11 @@
-// helper class that reads a direcotry 
-// and resturns a vector of dFile_Info 
+/**
+ * @author Shamar Pennant
+ * @date 08/02/26
+ * 
+ * responsible for reading files within a directory, processing
+ * their meta data, and saving them in a vector to be used 
+ * across the file manager to allow file representation.
+ */
 
 #include "wx/dir.h"
 #include <vector>
@@ -27,15 +33,16 @@ class dFile_DirectoryScanner {
         std::vector<fMetaData> file_vect;     //list of files/dirs in current directory
 
     public:
-        // explicit consrtuctor to ensure unwanted conversions dont occur
+        /* explicit consrtuctor to ensure unwanted conversions dont occur. 
+        takes in a const wxString object as a path to initialize*/
         explicit dFile_DirectoryScanner(const wxString &path);
 
         // getters
-        wxString get_file_dir() const;
-        std::vector<wxString> get_past_dir_vect() const;
-        std::vector<fMetaData> get_file_vect() const;
-        int get_num_of_paths_in_history() const;
-        int get_num_of_files_in_dir() const;
+        wxString get_file_dir() const; // retrieve the file directory being used by the directory scanner
+        std::vector<wxString> get_past_dir_vect() const; // gets the vector of previous directories
+        std::vector<fMetaData> get_file_vect() const; // gets the file meta data vector from within the last processed directory
+        int get_num_of_paths_in_history() const; // returns the number of paths in history vector
+        int get_num_of_files_in_dir() const; // gets the number of files in the last processed directory
 
         // setters
         void set_dir_path(const wxString &new_path); // sets the current directory path

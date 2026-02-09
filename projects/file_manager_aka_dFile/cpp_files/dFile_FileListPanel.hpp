@@ -1,13 +1,11 @@
-// responsible for displaying direcotry contents,
-// handling double click navigation, selection, 
-// and methods of refreshing the list
-
-/* class notes:
-    theres no need to store the parent panel as wxWidgets handles that already.
-    the constructor only recievees the parent pointer so that it can store it in
-    wxPanel through the bass class constructor. 
-    all panel ownership is handled by wxWidgets so theres nothing we should be
-    holding in here other than metadata */
+/**
+ * @author Shamar Pennant
+ * @date 08/02/26
+ * 
+ * responsible for displaying direcotry contents, handling double 
+ * click navigation, selection, and methods of loading and 
+ * refreshing the list
+ */
 
 #ifndef DFILE_FILELISTPANEL_HPP
     #define DFILE_FILELISTPANEL_HPP
@@ -16,51 +14,56 @@
 #include "wx/wx.h"
 #include "dFile_DirectoryScanner.hpp" // using for file meta data
 
+// Forward declaration
+class dFile_Frame;
+
 class dFile_FileListPanel : public wxPanel {
     private:
         wxListCtrl* listCtrl; // gives control over the list in the panel
         wxString currentPath; // will hold the current path being used
         std::vector<fMetaData> files; // current path files info
+        dFile_Frame *df_frame; // used to help refresh the frame title
 
-        // sorts based on values. 0 = name, 1 = type, 2 = date, 3 = size
-        int currentSortColumn = 0;
-        bool sortAscending = true; // false sorts by descending
+        int currentSortColumn = 0; // used to indicate the volumn being used for sorting
+        bool sortAscending = true; // indicating the direction of the sort
 
-        // internal helpers
-        void PopulateListCtrl(); // populates list control object given current directory
-        void ClearList(); // clears the list when needing to refresh
+        //--internal helpers
+        /** given file data is processed with the directory scanner, it populates the
+         * list ctrl object in the frame with enries representing files and directories
+        */
+        void PopulateListCtrl(); 
+        void ClearList(); // clears list ctrl to help prime for new files
 
         // event handlers
-        void OnItemActivated(wxListEvent& evt); // handling when an item is activated
-        void OnItemSelected(wxListEvent& evt); // handling when an is selected (show preview)
-        void OnColumnClicked(wxListEvent& evt); // not sure what to do with this yet. may rmv
-        // TODO: figure out if i need OnColumnClicked or not
+        void OnItemActivated(wxListEvent& evt); // envent handler for when an item in the list is activated via double click or enter
+        void OnItemSelected(wxListEvent& evt); // event handler for when an item in the list is selected
+        void OnColumnClicked(wxListEvent& evt); // event handler for when a column is clicked
 
     public:
-        /* creates the list control, adding columns to the list,
-        setting up the layout, and binding events.*/
-        dFile_FileListPanel(wxWindow* parent, wxWindowID id = wxID_ANY);
+        /**constructory. takes in a parent object pointer, an assigned window id (left as default), 
+         * and a pointer to the over all frame to allow communication when changing the window text
+         * during directory changes
+        */
+        dFile_FileListPanel(wxWindow* parent, wxWindowID id = wxID_ANY, dFile_Frame *frame = nullptr);
 
-        // -- directory operations
+        /**uses the directory scanner to load file meta within the currently saved file directory. 
+         * takes in const wxString path to use for the scan
+         */
+        void LoadDirectory(const wxString& path);
+        /**refreshes the list ctrl. uses bool load to indicate whether or not to load the directory
+         * again
+         */
+        void RefreshList(bool load);
 
-        /*uses the directory scanner in dFrame to load file meta data
-        into the listctrl object for the UI. if an item is a directory, 
-        ' >' will be tacked on to the end of the file name. while the 
-        file type will be empty*/ 
-        void LoadDirectory(const wxString& path); 
-        void RefreshList(bool load); // refreshes the wxListCtrl contents as well as column width (use this once dir/list is already loaded onto the screen!!!)
+        // takes in the columnindex to sort by and the direction (ascedning or decending)
+        void SortByColumn(int columnIndex, bool ascending);
 
-        // sorting
-        void SortByColumn(int columnIndex, bool ascending); // used to change sorting choice
+        int GetSelectedIndex() const; // gets the selected index within list ctrl
+        fMetaData GetSelectedFile() const; // retrieves the selected file meta data
 
-        // selection
-        bool HasSelection() const; // sees if a file is selected or not
-        int GetSelectedIndex() const; // extracts the index of the file withen the vector
-        fMetaData GetSelectedFile() const; // used to get the metadata of a selected file
+        wxString GetCurrentPath() const { return currentPath; } // returns the path last saved
 
-        // getters
-        wxString GetCurrentPath() const { return currentPath; } // gets the current path from the dir scanner in dframe
-
+        void set_df_frame(dFile_Frame &dff); // links dFile_Frame dff to this object to allow communication among one another
 };
 
 #endif

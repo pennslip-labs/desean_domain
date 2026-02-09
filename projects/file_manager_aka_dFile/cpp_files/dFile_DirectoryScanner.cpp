@@ -1,6 +1,3 @@
-// helper class that reads a direcotry 
-// and resturns a vector of dFile_Info 
-
 #include "dFile_DirectoryScanner.hpp"
 #include <iostream>
 #include "dFile_wxDataFormat.hpp"
@@ -85,15 +82,10 @@ bool dFile_DirectoryScanner::scan_dir() {
             wxDateTime modifTime = fn.GetModificationTime(); 
             time_t ts = 0;
             if (modifTime.IsValid()) ts = modifTime.GetTicks();
-            // fallback incase of being invalid
-            else {
-                cout << "modification time for \"" + wxTempStr + "\" is invalid" << endl;
-                // will be formatted as N\A in the string formatter
-            } 
 
             // ensuring that file size can be retrieved safely as well
             uintmax_t file_size = 0;
-            if (!wxDirExists(full_path_to_file)) { // only grab the file size for files
+            if (!fn.IsDir()) { // only grab the file size for files
                 wxULongLong size = fn.GetSize();
                 if (size != wxInvalidSize) file_size = size.GetValue();
                 else cout << "Invalid size for \"" + wxTempStr.ToStdString() + "\", setting to 0" << endl;
@@ -105,7 +97,7 @@ bool dFile_DirectoryScanner::scan_dir() {
                 fn.GetExt().ToStdString(),              // grab the extension
                 file_size,                              // get the file size (unitmax_t)
                 ts,                                     // grab the modification time
-                fn.IsDir(),                             // check if it's a directory
+                wxDir::Exists(full_path_to_file),       // check if it's a directory
                 false                                   // check if it's a symlink
             };
 

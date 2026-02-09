@@ -1,4 +1,8 @@
-/**helper that was sourced from Copilot 2026 > https://copilot.microsoft.com/shares/WESpw9pQiDC3vxDcsage5
+/**
+ * @author Copilot
+ * @date 08/02/26
+ * 
+ * helper that was sourced from Copilot 2026 > https://copilot.microsoft.com/shares/WESpw9pQiDC3vxDcsage5
  * I had difficulties with my installation of wxWidgets as it seemed I 
  * didn't have any method of detecting symlinks included in the package.
  * which lead to segfaults within my code as it couldn't parse the 
