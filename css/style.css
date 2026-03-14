@@ -1,0 +1,269 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
+    line-height: 1.6;
+    color: #0a0e27;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2d1b4e 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+header.hero {
+    background: linear-gradient(135deg, #667eea 0%, #a855f7 50%, #d946ef 100%);
+    color: #ffffff;
+    padding: 80px 20px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1);
+    border-bottom: 3px solid #d946ef;
+    position: relative;
+    overflow: hidden;
+}
+
+header.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(90deg, transparent 0%, rgba(255, 0, 255, 0.03) 50%, transparent 100%);
+    animation: glitch 8s ease-in-out infinite;
+}
+
+@keyframes glitch {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+header.hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-shadow: 0 0 20px rgba(217, 70, 239, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+}
+
+.tagline {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    opacity: 0.95;
+    color: #a3e7ff;
+    text-shadow: 0 0 10px rgba(163, 231, 255, 0.5);
+}
+
+.intro {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+    color: #f0f0f0;
+}
+
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+    color: #ffffff;
+    padding: 12px 30px;
+    border-radius: 0;
+    border: 2px solid #ec4899;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
+    transition: all 0.3s;
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px) skewX(-2deg);
+    box-shadow: 0 0 30px rgba(236, 72, 153, 0.7), inset 0 0 20px rgba(236, 72, 153, 0.2);
+    background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+}
+
+main {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.projects-section h2,
+.about-section h2 {
+    font-size: 2.2em;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #a855f7;
+    text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+    letter-spacing: 1px;
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.project-card {
+    background: linear-gradient(135deg, rgba(26, 31, 58, 0.8) 0%, rgba(45, 27, 78, 0.8) 100%);
+    border-radius: 0;
+    padding: 30px;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.2), inset 0 0 20px rgba(168, 85, 247, 0.05);
+    transition: all 0.3s;
+    border: 2px solid #a855f7;
+    border-left: 4px solid #ec4899;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+}
+
+.project-card:hover {
+    transform: translateY(-8px) rotateY(5deg);
+    box-shadow: 0 0 40px rgba(236, 72, 153, 0.4), inset 0 0 20px rgba(168, 85, 247, 0.1);
+    border-color: #ec4899;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.project-header h3 {
+    font-size: 1.5em;
+    color: #a3e7ff;
+    text-shadow: 0 0 10px rgba(163, 231, 255, 0.4);
+}
+
+.tech-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 0;
+    font-size: 0.85em;
+    font-weight: 600;
+    color: white;
+    border: 1px solid;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tech-badge.gdscript {
+    background-color: rgba(71, 140, 191, 0.3);
+    border-color: #478cbf;
+    box-shadow: 0 0 10px rgba(71, 140, 191, 0.4);
+}
+
+.tech-badge.cpp {
+    background-color: rgba(0, 66, 126, 0.3);
+    border-color: #0042be;
+    box-shadow: 0 0 10px rgba(0, 66, 126, 0.4);
+}
+
+.project-description {
+    color: #d0d0d0;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.project-meta {
+    font-size: 0.9em;
+    color: #00ff88;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px rgba(0, 255, 136, 0.3);
+}
+
+.project-link {
+    color: #a855f7;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    align-self: flex-start;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid transparent;
+}
+
+.project-link:hover {
+    color: #ec4899;
+    border-bottom: 2px solid #ec4899;
+    text-shadow: 0 0 10px rgba(236, 72, 153, 0.6);
+}
+
+.about-section {
+    background: linear-gradient(135deg, rgba(26, 31, 58, 0.9) 0%, rgba(45, 27, 78, 0.9) 100%);
+    padding: 40px;
+    border-radius: 0;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.2), inset 0 0 20px rgba(168, 85, 247, 0.05);
+    max-width: 800px;
+    margin: 40px auto;
+    border: 2px solid #a855f7;
+    backdrop-filter: blur(10px);
+}
+
+.about-section p {
+    font-size: 1.1em;
+    color: #d0d0d0;
+    line-height: 1.8;
+}
+
+footer {
+    background-color: rgba(10, 14, 39, 0.95);
+    color: #a3e7ff;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 60px;
+    border-top: 2px solid #a855f7;
+    box-shadow: 0 -10px 30px rgba(168, 85, 247, 0.1);
+}
+
+footer a {
+    color: #ec4899;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+footer a:hover {
+    text-shadow: 0 0 10px rgba(236, 72, 153, 0.6);
+    color: #a855f7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header.hero {
+        padding: 60px 20px;
+    }
+
+    header.hero h1 {
+        font-size: 2em;
+    }
+
+    .tagline {
+        font-size: 1.1em;
+    }
+
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+
+    .about-section {
+        padding: 30px 20px;
+    }
+}
