@@ -279,6 +279,228 @@ footer a:hover {
     color: #a855f7;
 }
 
+/* Back Link Styling */
+.back-link {
+    display: inline-block;
+    color: #a3e7ff;
+    text-decoration: none;
+    font-size: 0.95em;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+    text-shadow: 0 0 5px rgba(163, 231, 255, 0.3);
+}
+
+.back-link:hover {
+    color: #ec4899;
+    text-shadow: 0 0 10px rgba(236, 72, 153, 0.6);
+}
+
+/* Project Detail Sections */
+.project-detail-section {
+    background: linear-gradient(135deg, rgba(26, 31, 58, 0.9) 0%, rgba(45, 27, 78, 0.9) 100%);
+    padding: 40px;
+    border-radius: 0;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.2), inset 0 0 20px rgba(168, 85, 247, 0.05);
+    margin: 40px 0;
+    border: 2px solid #a855f7;
+    backdrop-filter: blur(10px);
+}
+
+.project-detail-section h2 {
+    color: #a855f7;
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+    letter-spacing: 1px;
+}
+
+.project-detail-section h3 {
+    color: #a3e7ff;
+    font-size: 1.3em;
+    margin: 20px 0 10px 0;
+    text-shadow: 0 0 10px rgba(163, 231, 255, 0.3);
+}
+
+.project-detail-section p {
+    color: #d0d0d0;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+.project-detail-section a {
+    color: #ec4899;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.project-detail-section a:hover {
+    color: #a855f7;
+    text-shadow: 0 0 10px rgba(236, 72, 153, 0.6);
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.feature-item {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(236, 72, 153, 0.05) 100%);
+    padding: 25px;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 0;
+    transition: all 0.3s;
+}
+
+.feature-item:hover {
+    border-color: #ec4899;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.2), inset 0 0 15px rgba(236, 72, 153, 0.1);
+    transform: translateY(-3px);
+}
+
+.feature-item h3 {
+    color: #ec4899;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(236, 72, 153, 0.4);
+}
+
+.feature-item p {
+    color: #c0c0c0;
+    font-size: 0.95em;
+    margin: 0;
+}
+
+/* Tech Info Grid */
+.tech-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.tech-item {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(236, 72, 153, 0.05) 100%);
+    padding: 25px;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 0;
+}
+
+.tech-item h3 {
+    color: #a855f7;
+    font-size: 1.15em;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+    padding-bottom: 10px;
+}
+
+.tech-item ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tech-item li {
+    color: #d0d0d0;
+    margin: 10px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.tech-item li::before {
+    content: '▸';
+    color: #ec4899;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.tech-item li strong {
+    color: #a3e7ff;
+}
+
+/* Get Started Content */
+.get-started-content {
+    font-size: 0.95em;
+}
+
+.get-started-content ol {
+    color: #d0d0d0;
+    padding-left: 25px;
+    margin: 15px 0;
+}
+
+.get-started-content li {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.get-started-content code {
+    background: rgba(0, 255, 136, 0.05);
+    color: #00ff88;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
+    text-shadow: 0 0 5px rgba(0, 255, 136, 0.3);
+    font-size: 0.9em;
+}
+
+.code-block {
+    display: block;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    color: #00ff88;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 0;
+    overflow-x: auto;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(236, 72, 153, 0.1) 100%);
+    padding: 50px 40px;
+    border: 2px solid #a855f7;
+    text-align: center;
+    margin: 50px 0;
+    border-radius: 0;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
+}
+
+.cta-button.primary {
+    display: inline-block;
+    background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+    color: #ffffff;
+    padding: 15px 40px;
+    border: 2px solid #ec4899;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
+    transition: all 0.3s;
+    box-shadow: 0 0 25px rgba(236, 72, 153, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.05em;
+}
+
+.cta-button.primary:hover {
+    transform: translateY(-3px) skewX(-2deg);
+    box-shadow: 0 0 40px rgba(236, 72, 153, 0.7), inset 0 0 20px rgba(236, 72, 153, 0.2);
+    background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+}
+
+.cta-subtitle {
+    color: #a3e7ff;
+    margin-top: 15px;
+    font-size: 0.95em;
+    text-shadow: 0 0 10px rgba(163, 231, 255, 0.3);
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     header.hero {
@@ -287,6 +509,10 @@ footer a:hover {
 
     main {
         padding: 0 60px;
+    }
+
+    .project-detail-section {
+        padding: 30px;
     }
 }
 
@@ -314,6 +540,30 @@ footer a:hover {
 
     .about-section {
         padding: 30px 20px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .tech-info {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .project-detail-section {
+        padding: 25px 20px;
+        margin: 30px 0;
+    }
+
+    .cta-section {
+        padding: 40px 30px;
+    }
+
+    .cta-button.primary {
+        font-size: 0.95em;
+        padding: 12px 30px;
     }
 }
 
@@ -343,5 +593,38 @@ footer a:hover {
     .about-section {
         padding: 20px 15px;
         margin: 30px 0;
+    }
+
+    .project-detail-section {
+        padding: 20px 15px;
+        margin: 20px 0;
+    }
+
+    .project-detail-section h2 {
+        font-size: 1.4em;
+    }
+
+    .project-detail-section h3 {
+        font-size: 1.1em;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .tech-info {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .cta-section {
+        padding: 30px 20px;
+    }
+
+    .code-block {
+        font-size: 0.85em;
+        padding: 12px;
+        overflow-x: auto;
     }
 }

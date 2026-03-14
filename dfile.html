@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dFile - Retro File Manager</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <a href="index.html" class="back-link">← Back to Portfolio</a>
+            <h1>dFile</h1>
+            <p class="tagline">Retro-Styled File Manager</p>
+            <p class="intro">A lightweight, efficient file manager with a nostalgic console-like theme. Built with C++ and wxWidgets for cross-platform performance.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="project-detail-section">
+            <h2>About This Project</h2>
+            <p>dFile is a file manager application that combines retro aesthetics with practical file management features. Inspired by vintage terminal interfaces and early GUI file managers, it provides an intuitive way to navigate, organize, and manage files on your system. With its minimal resource footprint and nostalgic design, dFile brings back the charm of early computing while remaining fully functional and modern.</p>
+        </section>
+
+        <section class="project-detail-section">
+            <h2>Core Features</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3>Retro Console Aesthetic</h3>
+                    <p>Classic terminal-inspired UI with modern responsiveness. Experience computing as it was meant to be.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Efficient Navigation</h3>
+                    <p>Browse directories with intuitive sidebar navigation and organized file list view.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>File Details</h3>
+                    <p>View comprehensive information about selected files including size, date modified, and permissions.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Search & Filter</h3>
+                    <p>Quickly find files with powerful search and filter functionality.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Lightweight</h3>
+                    <p>Minimal resource footprint with blazing fast performance on any system.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Cross-Platform</h3>
+                    <p>Runs seamlessly on Windows, macOS, and Linux with native performance.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-detail-section">
+            <h2>Technical Details</h2>
+            <div class="tech-info">
+                <div class="tech-item">
+                    <h3>Technology Stack</h3>
+                    <ul>
+                        <li><strong>Language:</strong> C++ (C++11 standard)</li>
+                        <li><strong>GUI Framework:</strong> wxWidgets 3.2+</li>
+                        <li><strong>Platforms:</strong> Windows, macOS, Linux</li>
+                        <li><strong>License:</strong> GNU General Public License v3.0</li>
+                    </ul>
+                </div>
+                <div class="tech-item">
+                    <h3>Key Components</h3>
+                    <ul>
+                        <li><strong>Launcher:</strong> wxApp initialization & CLI arguments</li>
+                        <li><strong>Frame:</strong> Main window and UI layout</li>
+                        <li><strong>Controller:</strong> Business logic & event handling</li>
+                        <li><strong>DirectoryScanner:</strong> File system traversal</li>
+                        <li><strong>Panels:</strong> Sidebar, file list, details, filter</li>
+                    </ul>
+                </div>
+                <div class="tech-item">
+                    <h3>System Requirements</h3>
+                    <ul>
+                        <li>C++11 compatible compiler</li>
+                        <li>512MB RAM minimum</li>
+                        <li>50MB disk space for build</li>
+                        <li>wxWidgets 3.2 or later</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-detail-section">
+            <h2>Build & Installation</h2>
+            <div class="get-started-content">
+                <h3>Dependencies</h3>
+                <p><strong>Linux (Ubuntu/Debian):</strong></p>
+                <code class="code-block">sudo apt-get install libwxgtk3.2-dev build-essential</code>
+
+                <p><strong>macOS:</strong></p>
+                <code class="code-block">brew install wxwidgets</code>
+
+                <p><strong>Windows:</strong> Download MSVC Build Tools and wxWidgets from wxwidgets.org</p>
+
+                <h3>Compiling from Source</h3>
+                <ol>
+                    <li>Clone the repository: <code>git clone https://github.com/slipnut44/dFile.git</code></li>
+                    <li>Navigate to the cpp_files directory: <code>cd dFile/cpp_files</code></li>
+                    <li>Compile using Make: <code>make</code></li>
+                    <li>Run the executable: <code>./bin/dFile</code></li>
+                </ol>
+
+                <h3>Using CMake (Optional)</h3>
+                <ol>
+                    <li><code>mkdir build && cd build</code></li>
+                    <li><code>cmake ..</code></li>
+                    <li><code>make</code></li>
+                    <li><code>./dFile</code></li>
+                </ol>
+
+                <h3>Command Line Usage</h3>
+                <code class="code-block">dFile [DIRECTORY]</code>
+                <p>Example: <code>dFile ~/Documents</code></p>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <a href="https://github.com/slipnut44/dFile" class="cta-button primary" target="_blank">View Full Repository on GitHub</a>
+            <p class="cta-subtitle">Explore the source code, contribute, and report issues</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Shamar Pennant | <a href="https://github.com/slipnut44">GitHub</a></p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
