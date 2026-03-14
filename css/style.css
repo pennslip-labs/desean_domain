@@ -38,16 +38,16 @@ body > * {
 header.hero {
     background: linear-gradient(135deg, #667eea 0%, #a855f7 50%, #d946ef 100%);
     color: #ffffff;
-    padding: 80px 20px;
-    text-align: center;
+    padding: 80px 60px;
+    text-align: left;
     box-shadow: 0 0 40px rgba(168, 85, 247, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1);
     border-bottom: 3px solid #d946ef;
     position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: center;
-    min-height: 500px;
+    justify-content: flex-start;
+    min-height: 400px;
 }
 
 header.hero::before {
@@ -68,14 +68,12 @@ header.hero::before {
 }
 
 .hero-content {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 700px;
     position: relative;
     z-index: 1;
-    text-align: center;
+    text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
 }
 
@@ -99,11 +97,9 @@ header.hero h1 {
     font-size: 1.1em;
     margin-bottom: 30px;
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
     opacity: 0.9;
     color: #f0f0f0;
-    text-align: center;
+    text-align: left;
 }
 
 .cta-button {
@@ -129,9 +125,9 @@ header.hero h1 {
 }
 
 main {
-    max-width: 1200px;
+    max-width: 900px;
     margin: 60px auto;
-    padding: 0 20px;
+    padding: 0 80px;
     position: relative;
     z-index: 1;
 }
@@ -140,7 +136,7 @@ main {
 .about-section h2 {
     font-size: 2.2em;
     margin-bottom: 40px;
-    text-align: center;
+    text-align: left;
     color: #a855f7;
     text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
     letter-spacing: 1px;
@@ -214,7 +210,7 @@ main {
     color: #d0d0d0;
     margin-bottom: 15px;
     flex-grow: 1;
-    text-align: center;
+    text-align: left;
 }
 
 .project-meta {
@@ -246,8 +242,8 @@ main {
     padding: 40px;
     border-radius: 0;
     box-shadow: 0 0 30px rgba(168, 85, 247, 0.2), inset 0 0 20px rgba(168, 85, 247, 0.05);
-    max-width: 800px;
-    margin: 40px auto;
+    max-width: 100%;
+    margin: 40px 0;
     border: 2px solid #a855f7;
     backdrop-filter: blur(10px);
 }
@@ -256,7 +252,7 @@ main {
     font-size: 1.1em;
     color: #d0d0d0;
     line-height: 1.8;
-    text-align: center;
+    text-align: left;
 }
 
 footer {
@@ -284,9 +280,20 @@ footer a:hover {
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    header.hero {
+        padding: 60px 50px;
+    }
+
+    main {
+        padding: 0 60px;
+    }
+}
+
 @media (max-width: 768px) {
     header.hero {
-        padding: 60px 20px;
+        padding: 50px 30px;
+        min-height: 350px;
     }
 
     header.hero h1 {
@@ -297,11 +304,44 @@ footer a:hover {
         font-size: 1.1em;
     }
 
+    main {
+        padding: 0 30px;
+    }
+
     .projects-container {
         grid-template-columns: 1fr;
     }
 
     .about-section {
         padding: 30px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    header.hero {
+        padding: 40px 20px;
+        min-height: 300px;
+    }
+
+    header.hero h1 {
+        font-size: 1.5em;
+    }
+
+    .tagline {
+        font-size: 1em;
+    }
+
+    .intro {
+        font-size: 1em;
+    }
+
+    main {
+        padding: 0 20px;
+        margin: 40px auto;
+    }
+
+    .about-section {
+        padding: 20px 15px;
+        margin: 30px 0;
     }
 }
