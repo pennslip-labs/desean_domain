@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YTBLND - YouTube Blend Application</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <a href="index.html" class="back-link">← Back to Portfolio</a>
+            <h1>YTBLND</h1>
+            <p class="tagline">YouTube Blend - Collaborative Feed Generator</p>
+            <p class="intro">A desktop application that blends YouTube playlist and watch history data from multiple users to generate a shared recommendation feed with real-time chat capabilities.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="project-detail-section">
+            <h2>About This Project</h2>
+            <p>YTBLND is a sophisticated C++ desktop application designed for collaborative video discovery. It empowers groups of 2-8 users to blend their YouTube preferences into a unified, personalized recommendation feed. Users can upload their YouTube data via Google Takeout exports, and the application automatically enriches metadata using the YouTube Data API v3. Beyond content discovery, YTBLND includes built-in chatrooms for blend-specific discussions, making it a complete social video exploration platform.</p>
+        </section>
+
+        <section class="project-detail-section">
+            <h2>Core Features</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3>User Management</h3>
+                    <p>Secure registration and login system with persistent user profiles and preferences.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Data Import</h3>
+                    <p>Upload YouTube data via Google Takeout CSV or HTML watch history exports seamlessly.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Metadata Enrichment</h3>
+                    <p>Automatic enhancement of video metadata including titles, channels, thumbnails, and logos via YouTube Data API.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Blend Creation</h3>
+                    <p>Create blends with 2-8 participants and customize your collaborative viewing experience.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Randomized Feed</h3>
+                    <p>Experience blended video recommendations in a dynamic 3×2 grid with intelligent randomization algorithms.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Real-Time Chat</h3>
+                    <p>Discuss videos with blend participants in dedicated blend-specific chatrooms.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Feed Navigation</h3>
+                    <p>Paginate through results with intuitive refresh functionality to discover more blended content.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Persistent Storage</h3>
+                    <p>Server-backed data persistence with SQLite support for local development and testing.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-detail-section">
+            <h2>Technical Details</h2>
+            <div class="tech-info">
+                <div class="tech-item">
+                    <h3>Technology Stack</h3>
+                    <ul>
+                        <li><strong>Language:</strong> C++ (C++20 standard)</li>
+                        <li><strong>GUI Framework:</strong> wxWidgets 3.2+</li>
+                        <li><strong>Database:</strong> SQLite3</li>
+                        <li><strong>Networking:</strong> libcurl</li>
+                        <li><strong>APIs:</strong> YouTube Data API v3</li>
+                        <li><strong>Testing:</strong> GoogleTest</li>
+                        <li><strong>HTML Parsing:</strong> Gumbo Parser</li>
+                        <li><strong>Build System:</strong> CMake 3.16+</li>
+                    </ul>
+                </div>
+                <div class="tech-item">
+                    <h3>Architecture</h3>
+                    <ul>
+                        <li><strong>Modular Design:</strong> Separation of UI, business logic, data parsing, algorithms, and persistence</li>
+                        <li><strong>Data Layer:</strong> Handles YouTube CSV and HTML export parsing</li>
+                        <li><strong>Algorithm Layer:</strong> Implements blending and randomization logic</li>
+                        <li><strong>Backend Integration:</strong> Server-backed persistence with local SQLite fallback</li>
+                        <li><strong>API Integration:</strong> Real-time metadata enrichment from YouTube</li>
+                    </ul>
+                </div>
+                <div class="tech-item">
+                    <h3>System Requirements</h3>
+                    <ul>
+                        <li>C++20 compatible compiler (GCC or Clang)</li>
+                        <li>CMake 3.16 or later</li>
+                        <li>wxWidgets 3.2+</li>
+                        <li>libcurl for HTTP requests</li>
+                        <li>SQLite3 (optional for local persistence)</li>
+                        <li>Gumbo Parser (for HTML parsing support)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-detail-section">
+            <h2>Build & Installation</h2>
+            <div class="get-started-content">
+                <h3>Dependencies</h3>
+                <p><strong>Arch Linux:</strong></p>
+                <code class="code-block">sudo pacman -S cmake gcc wxwidgets-gtk3 curl sqlite gumbo-parser gtest</code>
+
+                <p><strong>Ubuntu / Debian:</strong></p>
+                <code class="code-block">sudo apt install cmake g++ libwxgtk3.2-dev libcurl4-openssl-dev libsqlite3-dev libgumbo-dev libgtest-dev</code>
+
+                <p><strong>Fedora / RHEL / CentOS:</strong></p>
+                <code class="code-block">sudo dnf install cmake gcc gcc-c++ wxGTK3-devel libcurl-devel sqlite-devel gumbo-parser gumbo-parser-devel gtest-devel</code>
+
+                <p><strong>macOS:</strong></p>
+                <code class="code-block">brew install cmake wxwidgets curl sqlite gumbo-parser googletest</code>
+
+                <h3>Building from Source</h3>
+                <code class="code-block">cd YTBLND-group45_cs3305proj<br>./build_src.sh</code>
+
+                <h3>Running Tests</h3>
+                <code class="code-block">./run_tests.sh<br>./test_live_backend_connectivity.sh</code>
+            </div>
+        </section>
+
+        <section class="project-detail-section">
+            <h2>Team & Credits</h2>
+            <p>YTBLND is a group project from CS3307 (Software Engineering), developed collaboratively by Group 45. This project showcases expertise in C++ systems programming, GUI development, algorithm design, and API integration in a team environment.</p>
+            
+            <h3>Team Members</h3>
+            <ul>
+                <li><strong>Jasmine Kumar</strong> - Lead Developer</li>
+                <li><strong>Shamar Pennant</strong> - Lead Developer & Project Coordinator</li>
+                <li><strong>Xavier Lusetti</strong> - Developer</li>
+                <li><strong>Sophie Smith Stewart</strong> - Developer</li>
+                <li><strong>Yousef Selim</strong> - Initial Planning & Documentation</li>
+            </ul>
+        </section>
+
+        <section class="project-detail-section">
+            <h2>GitHub Repository</h2>
+            <p><a href="https://github.com/slipnut44/YTBLND" class="cta-button">View on GitHub</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Shamar Pennant | <a href="https://github.com/slipnut44">GitHub</a></p>
+    </footer>
+
+    <!-- Link to your JavaScript file -->
+    <script src="js/script.js"></script>
+</body>
+</html>
