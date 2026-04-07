@@ -378,12 +378,6 @@ footer a:hover {
     text-shadow: 0 0 10px rgba(163, 231, 255, 0.3);
 }
 
-.project-detail-section h4 {
-    color: #c297ff;
-    font-size: 0.9em;
-    text-shadow: #8767b3;
-}
-
 .project-detail-section p {
     color: #d0d0d0;
     line-height: 1.8;
@@ -491,6 +485,12 @@ footer a:hover {
     margin-bottom: 15px;
     border-bottom: 1px solid rgba(168, 85, 247, 0.3);
     padding-bottom: 10px;
+}
+
+.tech-item h4 {
+    color: #c297ff;
+    font-size: 1.05em;
+    text-shadow: #8767b3;
 }
 
 .tech-item ul {
