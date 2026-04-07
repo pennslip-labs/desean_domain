@@ -121,7 +121,10 @@ header.hero h1 {
     margin-bottom: 30px;
     max-width: 600px;
     opacity: 0.9;
-    color: #f0f0f0;
+    background: linear-gradient(90deg, #ffffff 0%, #a3e7ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     text-align: left;
 }
 
@@ -252,7 +255,10 @@ main {
 }
 
 .project-description {
-    color: #d0d0d0;
+    background: linear-gradient(90deg, #ffffff 0%, #a3e7ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 15px;
     flex-grow: 1;
     text-align: left;
@@ -266,7 +272,10 @@ main {
 }
 
 .project-link {
-    color: #a855f7;
+    background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s;
@@ -277,7 +286,10 @@ main {
 }
 
 .project-link:hover {
-    color: #ec4899;
+    background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     border-bottom: 2px solid #ec4899;
     text-shadow: 0 0 10px rgba(236, 72, 153, 0.6);
 }
@@ -295,7 +307,10 @@ main {
 
 .about-section p {
     font-size: 1.1em;
-    color: #d0d0d0;
+    background: linear-gradient(90deg, #ffffff 0%, #a3e7ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     line-height: 1.8;
     text-align: left;
 }
@@ -379,7 +394,10 @@ footer a:hover {
 }
 
 .project-detail-section p {
-    color: #d0d0d0;
+    background: linear-gradient(90deg, #ffffff 0%, #a3e7ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     line-height: 1.8;
     margin-bottom: 15px;
     font-size: 1em;
@@ -453,7 +471,10 @@ footer a:hover {
 }
 
 .feature-item p {
-    color: #c0c0c0;
+    background: linear-gradient(90deg, #ffffff 0%, #a3e7ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-size: 0.95em;
     margin: 0;
 }
