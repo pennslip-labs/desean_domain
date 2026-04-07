@@ -1,3 +1,19 @@
+/* ========================================
+   SHAMAR'S PORTFOLIO STYLESHEET
+   ======================================== 
+   
+   Theme: Dark cyberpunk with purple/pink accents
+   Color Scheme:
+   - Primary Purple: #a855f7
+   - Secondary Pink: #ec4899
+   - Light Cyan: #a3e7ff
+   - Dark Background: #0a0e27
+   - Text Light: #d0d0d0
+   - Text Highlight Green: #00ff88
+   
+   ======================================== */
+
+/* GLOBAL STYLES & HTML DEFAULTS */
 * {
     margin: 0;
     padding: 0;
@@ -34,6 +50,13 @@ body > * {
     position: relative;
     z-index: 1;
 }
+
+/* ======================================== 
+   HEADER & HERO SECTION
+   ======================================== 
+   Main hero banner at top of page
+   Contains: Title, tagline, intro text, CTA button
+   ======================================== */
 
 header.hero {
     background: linear-gradient(135deg, #667eea 0%, #a855f7 50%, #d946ef 100%);
@@ -124,6 +147,13 @@ header.hero h1 {
     background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
 }
 
+/* ======================================== 
+   MAIN CONTENT LAYOUT
+   ======================================== 
+   Container for all page content
+   Max-width: 900px, centered with padding
+   ======================================== */
+
 main {
     max-width: 900px;
     margin: 60px auto;
@@ -131,6 +161,10 @@ main {
     position: relative;
     z-index: 1;
 }
+
+/* ======================================== 
+   SECTION TITLES
+   ======================================== */
 
 .projects-section h2,
 .about-section h2 {
@@ -142,12 +176,23 @@ main {
     letter-spacing: 1px;
 }
 
+/* ======================================== 
+   PROJECT CARDS LAYOUT
+   ======================================== 
+   Grid container for project cards on index.html
+   Responsive grid: 3 columns on desktop, auto-fit for mobile
+   ======================================== */
+
 .projects-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
     margin-bottom: 60px;
 }
+
+/* INDIVIDUAL PROJECT CARD STYLING
+   Each project card has: title, tech badge, description, link
+   Hover effect: lifts card and changes border color */
 
 .project-card {
     background: linear-gradient(135deg, rgba(26, 31, 58, 0.8) 0%, rgba(45, 27, 78, 0.8) 100%);
@@ -255,6 +300,12 @@ main {
     text-align: left;
 }
 
+/* ======================================== 
+   FOOTER  
+   ======================================== 
+   Bottom section with copyright and links
+   ======================================== */
+
 footer {
     background-color: rgba(10, 14, 39, 0.95);
     color: #a3e7ff;
@@ -295,7 +346,13 @@ footer a:hover {
     text-shadow: 0 0 10px rgba(236, 72, 153, 0.6);
 }
 
-/* Project Detail Sections */
+/* ======================================== 
+   PROJECT DETAIL PAGE STYLING
+   ======================================== 
+   Used on individual project pages (commun-sim.html, dfile.html, ytblnd.html)
+   Sections: About, Features, Technical Details, Build/Installation, Credits
+   ======================================== */
+
 .project-detail-section {
     background: linear-gradient(135deg, rgba(26, 31, 58, 0.9) 0%, rgba(45, 27, 78, 0.9) 100%);
     padding: 40px;
@@ -340,7 +397,33 @@ footer a:hover {
     text-shadow: 0 0 10px rgba(236, 72, 153, 0.6);
 }
 
-/* Features Grid */
+.project-detail-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.project-detail-section li {
+    color: #d0d0d0;
+    margin: 10px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.project-detail-section li::before {
+    content: '▸';
+    color: #ec4899;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* ======================================== 
+   FEATURES GRID (2-column grid on detail pages)
+   ======================================== 
+   Used in project detail pages to display feature highlights
+   Each feature has title, description, and pink bullet
+   ======================================== */
+
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -375,7 +458,13 @@ footer a:hover {
     margin: 0;
 }
 
-/* Tech Info Grid */
+/* ======================================== 
+   TECHNICAL INFO GRID (3-column grid)
+   ======================================== 
+   Used in project detail pages for tech stack, architecture, requirements
+   Matches feature-item styling with purple accents
+   ======================================== */
+
 .tech-info {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -422,7 +511,13 @@ footer a:hover {
     color: #a3e7ff;
 }
 
-/* Get Started Content */
+/* ======================================== 
+   BUILD & INSTALLATION SECTION
+   ======================================== 
+   Code blocks and command snippets styling
+   Green text (#00ff88) for terminal commands
+   ======================================== */
+
 .get-started-content {
     font-size: 0.95em;
 }
@@ -500,6 +595,14 @@ footer a:hover {
     font-size: 0.95em;
     text-shadow: 0 0 10px rgba(163, 231, 255, 0.3);
 }
+
+/* ======================================== 
+   RESPONSIVE DESIGN BREAKPOINTS
+   ======================================== 
+   Mobile-first approach
+   Breakpoints: 1024px (tablet), 768px (mobile), 480px (small phone)
+   Adjust padding, font sizes, and grid columns for smaller screens
+   ======================================== */
 
 /* Responsive Design */
 @media (max-width: 1024px) {
