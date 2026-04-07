@@ -67,14 +67,18 @@
                 <div class="tech-item">
                     <h3>Technology Stack</h3>
                     <ul>
-                        <li><strong>Language:</strong> C++ (C++20 standard)</li>
-                        <li><strong>GUI Framework:</strong> wxWidgets 3.2+</li>
-                        <li><strong>Database:</strong> SQLite3</li>
-                        <li><strong>Networking:</strong> libcurl</li>
-                        <li><strong>APIs:</strong> YouTube Data API v3</li>
-                        <li><strong>Testing:</strong> GoogleTest</li>
-                        <li><strong>HTML Parsing:</strong> Gumbo Parser</li>
-                        <li><strong>Build System:</strong> CMake 3.16+</li>
+                        <h4>Frontend (C++):</h4>
+                        <li><strong>wxWidgets</strong> — GUI framework</li>
+                        <li><strong>libcurl</strong> — HTTP requests</li>
+                        <li><strong>IXWebSocket</strong> — Real-time chat</li>
+                        <li><strong>nlohmann/json</strong> — JSON parsing</li>
+                        <li><strong>Gumbo Parser</strong> — HTML parsing (optional)</li>
+                        <li><strong>SQLite3</strong> — Local persistence (optional)</li>
+                        <li><strong>GoogleTest</strong> — Testing (optional)</li>
+                        
+                        <h4>Backend:</h4>
+                        <li><strong>Go</strong> — Server implementation</li>
+                        <li><strong>YouTube Data API v3</strong> — Metadata enrichment</li>
                     </ul>
                 </div>
                 <div class="tech-item">
@@ -90,12 +94,11 @@
                 <div class="tech-item">
                     <h3>System Requirements</h3>
                     <ul>
+                        <li>CMake 3.16+</li>
                         <li>C++20 compatible compiler (GCC or Clang)</li>
-                        <li>CMake 3.16 or later</li>
-                        <li>wxWidgets 3.2+</li>
-                        <li>libcurl for HTTP requests</li>
-                        <li>SQLite3 (optional for local persistence)</li>
-                        <li>Gumbo Parser (for HTML parsing support)</li>
+                        <li>wxWidgets (core, base, net)</li>
+                        <li>libcurl</li>
+                        <li><em>Optional:</em> SQLite3, Gumbo Parser, GoogleTest, Doxygen</li>
                     </ul>
                 </div>
             </div>
@@ -106,16 +109,16 @@
             <div class="get-started-content">
                 <h3>Dependencies</h3>
                 <p><strong>Arch Linux:</strong></p>
-                <code class="code-block">sudo pacman -S cmake gcc wxwidgets-gtk3 curl sqlite gumbo-parser gtest</code>
+                <code class="code-block">sudo pacman -S cmake gcc wxwidgets-gtk3 curl sqlite gumbo-parser gtest ixwebsocket</code>
 
                 <p><strong>Ubuntu / Debian:</strong></p>
-                <code class="code-block">sudo apt install cmake g++ libwxgtk3.2-dev libcurl4-openssl-dev libsqlite3-dev libgumbo-dev libgtest-dev</code>
+                <code class="code-block">sudo apt install cmake g++ libwxgtk3.2-dev libcurl4-openssl-dev libsqlite3-dev libgumbo-dev libgtest-dev libixwebsocket-dev</code>
 
                 <p><strong>Fedora / RHEL / CentOS:</strong></p>
-                <code class="code-block">sudo dnf install cmake gcc gcc-c++ wxGTK3-devel libcurl-devel sqlite-devel gumbo-parser gumbo-parser-devel gtest-devel</code>
+                <code class="code-block">sudo dnf install cmake gcc gcc-c++ wxGTK3-devel libcurl-devel sqlite-devel gumbo-parser gumbo-parser-devel gtest-devel ixwebsocket-devel</code>
 
                 <p><strong>macOS:</strong></p>
-                <code class="code-block">brew install cmake wxwidgets curl sqlite gumbo-parser googletest</code>
+                <code class="code-block">brew install cmake wxwidgets curl sqlite gumbo-parser googletest ixwebsocket</code>
 
                 <h3>Building from Source</h3>
                 <code class="code-block">cd YTBLND-group45_cs3305proj<br>./build_src.sh</code>
