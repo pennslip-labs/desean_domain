@@ -395,6 +395,67 @@ main {
     text-align: left;
 }
 
+@media (max-width: 768px) {
+    header.hero {
+        padding: 48px 24px;
+    }
+
+    .hero-content--split {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .hero-text {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-text .intro {
+        text-align: center;
+    }
+
+    .hero-side {
+        width: 100%;
+        min-width: 0;
+        align-items: center;
+    }
+
+    .hero-profile {
+        width: 180px;
+        height: 180px;
+    }
+
+    .hero-contact {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .hero-cta--desktop {
+        display: none;
+    }
+
+    .hero-cta--mobile {
+        display: inline-block;
+        width: 100%;
+        max-width: 320px;
+        text-align: center;
+        margin-top: 12px;
+    }
+}
+
+@media (min-width: 769px) {
+    .hero-cta--desktop {
+        display: inline-block;
+        margin-top: 0;
+    }
+
+    .hero-cta--mobile {
+        display: none;
+    }
+}
+
 footer {
     background: rgba(53, 33, 55, 0.96);
     color: #f7e9ec;
