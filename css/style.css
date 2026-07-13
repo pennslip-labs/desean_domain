@@ -273,6 +273,22 @@ main {
     z-index: 1;
 }
 
+.reveal-element {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-element.reveal-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.reveal-element.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .projects-section h2,
 .about-section h2 {
     font-family: 'Cormorant Garamond', Georgia, serif;
@@ -628,6 +644,13 @@ footer a:hover {
     border: 1px solid rgba(124, 61, 84, 0.15);
     border-radius: 16px;
     box-shadow: 0 10px 24px rgba(87, 45, 63, 0.06);
+    transition: all 0.25s ease;
+}
+
+.tech-item:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px rgba(87, 45, 63, 0.1);
 }
 
 .tech-item h3 {

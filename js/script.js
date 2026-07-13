@@ -101,25 +101,33 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
    Uses Intersection Observer API for performance
    ======================================== */
 
-// Animation trigger when cards become visible
+// Animation trigger when content becomes visible
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
 };
 
-const observer = new IntersectionObserver(function(entries) {
+const observer = 'IntersectionObserver' in window ? new IntersectionObserver(function(entries) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.add('is-visible');
+            entry.target.classList.remove('reveal-hidden');
+            observer.unobserve(entry.target);
         }
     });
-}, observerOptions);
+}, observerOptions) : null;
 
-// Initialize cards as invisible, then observe them
-document.querySelectorAll('.project-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(card);
+// Initialize reveal elements as hidden, then observe them
+const revealElements = document.querySelectorAll('.reveal-element');
+revealElements.forEach((element, index) => {
+    element.classList.add('reveal-hidden');
+
+    if (observer) {
+        observer.observe(element);
+    } else {
+        setTimeout(() => {
+            element.classList.add('is-visible');
+            element.classList.remove('reveal-hidden');
+        }, 120 + index * 80);
+    }
 });
