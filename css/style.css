@@ -1,19 +1,20 @@
-/* ========================================
-   SHAMAR'S PORTFOLIO STYLESHEET
-   ======================================== 
-   
-   Theme: Dark cyberpunk with purple/pink accents
-   Color Scheme:
-   - Primary Purple: #a855f7
-   - Secondary Pink: #ec4899
-   - Light Cyan: #a3e7ff
-   - Dark Background: #0a0e27
-   - Text Light: #d0d0d0
-   - Text Highlight Green: #00ff88
-   
-   ======================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap');
 
-/* GLOBAL STYLES & HTML DEFAULTS */
+:root {
+    --page-bg: #f6ebf8;
+    --page-bg-deep: #e7d3eb;
+    --surface: rgba(255, 249, 255, 0.95);
+    --surface-strong: #fefcff;
+    --text-main: #3a2141;
+    --text-muted: #6f5278;
+    --accent: #8f4fa0;
+    --accent-strong: #6b2f74;
+    --accent-soft: #d4b0e2;
+    --accent-glow: rgba(107, 47, 116, 0.16);
+    --border: rgba(90, 45, 110, 0.18);
+    --shadow: 0 18px 45px rgba(74, 41, 90, 0.16);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -21,10 +22,12 @@
 }
 
 body {
-    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
-    line-height: 1.6;
-    color: #0a0e27;
-    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2d1b4e 100%);
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    line-height: 1.7;
+    color: var(--text-main);
+    background:
+        radial-gradient(circle at top left, rgba(202, 165, 217, 0.28), transparent 34%),
+        linear-gradient(135deg, var(--page-bg) 0%, #efe2ef 56%, var(--page-bg-deep) 100%);
     background-attachment: fixed;
     min-height: 100vh;
     position: relative;
@@ -33,17 +36,46 @@ body {
 body::before {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        linear-gradient(0deg, transparent 24%, rgba(168, 85, 247, 0.05) 25%, rgba(168, 85, 247, 0.05) 26%, transparent 27%, transparent 74%, rgba(168, 85, 247, 0.05) 75%, rgba(168, 85, 247, 0.05) 76%, transparent 77%, transparent),
-        linear-gradient(90deg, transparent 24%, rgba(168, 85, 247, 0.05) 25%, rgba(168, 85, 247, 0.05) 26%, transparent 27%, transparent 74%, rgba(168, 85, 247, 0.05) 75%, rgba(168, 85, 247, 0.05) 76%, transparent 77%, transparent);
-    background-size: 60px 60px;
-    background-attachment: fixed;
+    inset: 0;
     pointer-events: none;
     z-index: 0;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    inset: -8%;
+    background-image:
+        radial-gradient(circle at 15% 18%, rgba(151, 93, 170, 0.18) 0 0, transparent 22%),
+        radial-gradient(circle at 82% 24%, rgba(186, 118, 204, 0.16) 0 0, transparent 20%),
+        radial-gradient(circle at 36% 76%, rgba(102, 58, 124, 0.14) 0 0, transparent 24%);
+    background-position: 15% 18%, 82% 24%, 36% 76%;
+    background-repeat: no-repeat;
+    background-size: 12% 12%, 10% 10%, 14% 14%;
+    mix-blend-mode: multiply;
+    opacity: 0.9;
+    pointer-events: none;
+    z-index: 0;
+    animation: ripple-fade 14s ease-in-out infinite;
+}
+
+@keyframes ripple-fade {
+    0% {
+        background-size: 12% 12%, 10% 10%, 14% 14%;
+        opacity: 0.16;
+    }
+    40% {
+        background-size: 30% 30%, 24% 24%, 34% 34%;
+        opacity: 0.28;
+    }
+    70% {
+        background-size: 46% 46%, 40% 40%, 50% 50%;
+        opacity: 0.17;
+    }
+    100% {
+        background-size: 56% 56%, 48% 48%, 60% 60%;
+        opacity: 0.08;
+    }
 }
 
 body > * {
@@ -51,169 +83,230 @@ body > * {
     z-index: 1;
 }
 
-/* ======================================== 
-   HEADER & HERO SECTION
-   ======================================== 
-   Main hero banner at top of page
-   Contains: Title, tagline, intro text, CTA button
-   ======================================== */
-
 header.hero {
-    background: linear-gradient(135deg, #667eea 0%, #a855f7 50%, #d946ef 100%);
-    color: #ffffff;
+    background:
+        linear-gradient(135deg, rgba(26, 10, 37, 0.74) 0%, rgba(82, 42, 98, 0.62) 42%, rgba(157, 103, 168, 0.48) 100%),
+        url('../resources/purple_sky.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply, normal;
+    color: #fffaf7;
     padding: 80px 60px;
     text-align: left;
-    box-shadow: 0 0 40px rgba(168, 85, 247, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1);
-    border-bottom: 3px solid #d946ef;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 22px 50px rgba(70, 42, 82, 0.22);
     position: relative;
     overflow: hidden;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
-    min-height: 400px;
+    gap: 28px;
+    min-height: 420px;
 }
 
 header.hero::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        linear-gradient(90deg, transparent 0%, rgba(255, 0, 255, 0.03) 50%, transparent 100%);
-    animation: glitch 8s ease-in-out infinite;
-}
-
-@keyframes glitch {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 0.8; }
+    inset: 0;
+    background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.16), transparent 32%),
+        radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.08), transparent 24%),
+        linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.06) 50%, transparent 100%);
+    pointer-events: none;
+    opacity: 0.95;
 }
 
 .hero-content {
-    max-width: 700px;
+    max-width: 720px;
     position: relative;
     z-index: 1;
     text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 1.8rem 2.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    border-radius: 18px;
+}
+
+.hero-content--split {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    width: 100%;
+}
+
+.hero-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+    min-width: 260px;
+}
+
+.hero-profile {
+    width: 220px;
+    height: 220px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+    align-self: anchor-center;
+    margin-top: 0;
+}
+
+.hero-contact {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+}
+
+.contact-icon {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.16);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.contact-item a {
+    color: #fff7f8;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.contact-item a:hover {
+    color: #f8dce7;
+}
+
+.hero-profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 header.hero h1 {
-    font-size: 3em;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 3rem;
     margin-bottom: 10px;
     font-weight: 700;
-    text-shadow: 0 0 20px rgba(217, 70, 239, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.3);
-    letter-spacing: 2px;
+    letter-spacing: 0.04em;
+    text-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
 }
 
 .tagline {
-    font-size: 1.3em;
-    margin-bottom: 20px;
-    opacity: 0.95;
-    color: #a3e7ff;
-    text-shadow: 0 0 10px rgba(163, 231, 255, 0.5);
+    font-size: 1.15em;
+    margin-bottom: 18px;
+    color: #f7dfe6;
+    font-weight: 600;
+    letter-spacing: 0.04em;
 }
 
 .intro {
-    font-size: 1.1em;
-    margin-bottom: 30px;
-    max-width: 600px;
-    opacity: 0.9;
-    background: linear-gradient(90deg, #ffffff 0%, #a3e7ff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 1.04em;
+    margin-bottom: 28px;
+    max-width: 640px;
+    color: #fff7f8;
     text-align: left;
 }
 
 .cta-button {
     display: inline-block;
-    background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+    background: linear-gradient(135deg, #a864b3 0%, #7a3f7f 100%);
     color: #ffffff;
-    padding: 12px 30px;
-    border-radius: 0;
-    border: 2px solid #ec4899;
+    padding: 12px 24px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
     text-decoration: none;
     font-weight: 600;
-    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
-    transition: all 0.3s;
-    box-shadow: 0 0 20px rgba(236, 72, 153, 0.4);
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    transition: all 0.25s ease;
+    box-shadow: 0 10px 25px rgba(69, 33, 77, 0.22);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.12em;
+    font-size: 0.9rem;
 }
 
 .cta-button:hover {
-    transform: translateY(-2px) skewX(-2deg);
-    box-shadow: 0 0 30px rgba(236, 72, 153, 0.7), inset 0 0 20px rgba(236, 72, 153, 0.2);
-    background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(69, 33, 77, 0.28);
+    background: linear-gradient(135deg, #9c5ca6 0%, #6b356a 100%);
 }
 
-/* ======================================== 
-   MAIN CONTENT LAYOUT
-   ======================================== 
-   Container for all page content
-   Max-width: 900px, centered with padding
-   ======================================== */
-
 main {
-    max-width: 900px;
+    max-width: 980px;
     margin: 60px auto;
     padding: 0 80px;
     position: relative;
     z-index: 1;
 }
 
-/* ======================================== 
-   SECTION TITLES
-   ======================================== */
-
 .projects-section h2,
 .about-section h2 {
-    font-size: 2.2em;
-    margin-bottom: 40px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 2rem;
+    margin-bottom: 32px;
     text-align: left;
-    color: #a855f7;
-    text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
-    letter-spacing: 1px;
+    color: var(--accent-strong);
+    letter-spacing: 0.02em;
 }
-
-/* ======================================== 
-   PROJECT CARDS LAYOUT
-   ======================================== 
-   Grid container for project cards on index.html
-   Responsive grid: 3 columns on desktop, auto-fit for mobile
-   ======================================== */
 
 .projects-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-bottom: 60px;
 }
 
-/* INDIVIDUAL PROJECT CARD STYLING
-   Each project card has: title, tech badge, description, link
-   Hover effect: lifts card and changes border color */
-
 .project-card {
-    background: linear-gradient(135deg, rgba(26, 31, 58, 0.8) 0%, rgba(45, 27, 78, 0.8) 100%);
-    border-radius: 0;
+    background: var(--surface);
+    border-radius: 18px;
     padding: 30px;
-    box-shadow: 0 0 30px rgba(168, 85, 247, 0.2), inset 0 0 20px rgba(168, 85, 247, 0.05);
-    transition: all 0.3s;
-    border: 2px solid #a855f7;
-    border-left: 4px solid #ec4899;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
     display: flex;
     flex-direction: column;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
 }
 
 .project-card:hover {
-    transform: translateY(-8px) rotateY(5deg);
-    box-shadow: 0 0 40px rgba(236, 72, 153, 0.4), inset 0 0 20px rgba(168, 85, 247, 0.1);
-    border-color: #ec4899;
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(87, 45, 63, 0.16);
+    border-color: var(--accent);
 }
 
 .project-header {
@@ -224,189 +317,187 @@ main {
 }
 
 .project-header h3 {
-    font-size: 1.5em;
-    color: #a3e7ff;
-    text-shadow: 0 0 10px rgba(163, 231, 255, 0.4);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.45em;
+    color: var(--accent-strong);
 }
 
 .tech-badge {
     display: inline-block;
     padding: 5px 12px;
-    border-radius: 0;
-    font-size: 0.85em;
+    border-radius: 999px;
+    font-size: 0.82em;
     font-weight: 600;
-    color: white;
-    border: 1px solid;
-    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
+    color: var(--accent-strong);
+    border: 1px solid rgba(124, 61, 84, 0.2);
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.08em;
+    background: rgba(156, 79, 103, 0.08);
 }
 
 .tech-badge.gdscript {
-    background-color: rgba(71, 140, 191, 0.3);
-    border-color: #478cbf;
-    box-shadow: 0 0 10px rgba(71, 140, 191, 0.4);
+    background-color: rgba(103, 132, 175, 0.14);
+    color: #496484;
+    border-color: rgba(73, 100, 132, 0.2);
 }
 
 .tech-badge.cpp {
-    background-color: rgba(0, 66, 126, 0.3);
-    border-color: #0042be;
-    box-shadow: 0 0 10px rgba(0, 66, 126, 0.4);
+    background-color: rgba(74, 102, 152, 0.12);
+    color: #425f86;
+    border-color: rgba(66, 95, 134, 0.2);
 }
 
 .project-description {
-    background: linear-gradient(90deg, #ffffff 0%, #a3e7ff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 15px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
     flex-grow: 1;
     text-align: left;
 }
 
 .project-meta {
-    font-size: 0.9em;
-    color: #00ff88;
+    font-size: 0.95em;
+    color: var(--accent);
     margin-bottom: 20px;
-    text-shadow: 0 0 5px rgba(0, 255, 136, 0.3);
 }
 
 .project-link {
-    color: #ffffff;
+    color: var(--accent-strong);
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s;
+    transition: all 0.25s ease;
     align-self: flex-start;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.08em;
     border-bottom: 2px solid transparent;
 }
 
 .project-link:hover {
-    color: #d0d0d0;
-    border-bottom: 2px solid #ec4899;
-    text-shadow: 0 0 10px rgba(236, 72, 153, 0.6);
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
 }
 
 .about-section {
-    background: linear-gradient(135deg, rgba(26, 31, 58, 0.9) 0%, rgba(45, 27, 78, 0.9) 100%);
-    padding: 40px;
-    border-radius: 0;
-    box-shadow: 0 0 30px rgba(168, 85, 247, 0.2), inset 0 0 20px rgba(168, 85, 247, 0.05);
+    background: var(--surface);
+    padding: 36px 40px;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
     max-width: 100%;
     margin: 40px 0;
-    border: 2px solid #a855f7;
-    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(8px);
 }
 
 .about-section p {
-    font-size: 1.1em;
-    background: linear-gradient(90deg, #ffffff 0%, #a3e7ff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 1.04em;
+    color: var(--text-muted);
     line-height: 1.8;
     text-align: left;
 }
 
-/* ======================================== 
-   FOOTER  
-   ======================================== 
-   Bottom section with copyright and links
-   ======================================== */
-
 footer {
-    background-color: rgba(10, 14, 39, 0.95);
-    color: #a3e7ff;
+    background: rgba(53, 33, 55, 0.96);
+    color: #f7e9ec;
     text-align: center;
     padding: 30px 20px;
     margin-top: 60px;
-    border-top: 2px solid #a855f7;
-    box-shadow: 0 -10px 30px rgba(168, 85, 247, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 -12px 28px rgba(53, 33, 55, 0.12);
     position: relative;
     z-index: 1;
 }
 
 footer a {
-    color: #ec4899;
+    color: #efb7c2;
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s;
+    transition: all 0.25s ease;
 }
 
 footer a:hover {
-    text-shadow: 0 0 10px rgba(236, 72, 153, 0.6);
-    color: #a855f7;
+    color: #fff;
 }
 
-/* Back Link Styling */
 .back-link {
     display: inline-block;
-    color: #a3e7ff;
+    color: var(--accent-strong);
     text-decoration: none;
     font-size: 0.95em;
-    margin-bottom: 20px;
-    transition: all 0.3s;
-    text-shadow: 0 0 5px rgba(163, 231, 255, 0.3);
+    margin-bottom: 14px;
+    transition: all 0.25s ease;
 }
 
 .back-link:hover {
-    color: #ec4899;
-    text-shadow: 0 0 10px rgba(236, 72, 153, 0.6);
+    color: var(--accent);
 }
 
-/* ======================================== 
-   PROJECT DETAIL PAGE STYLING
-   ======================================== 
-   Used on individual project pages (commun-sim.html, dfile.html, ytblnd.html)
-   Sections: About, Features, Technical Details, Build/Installation, Credits
-   ======================================== */
+.hero-identity {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.hero-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: #fff8f9;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    backdrop-filter: blur(6px);
+}
+
+.hero-pill--subtle {
+    background: rgba(255, 255, 255, 0.08);
+    color: #f7dfe6;
+}
 
 .project-detail-section {
-    background: linear-gradient(135deg, rgba(26, 31, 58, 0.9) 0%, rgba(45, 27, 78, 0.9) 100%);
+    background: var(--surface);
     padding: 40px;
-    border-radius: 0;
-    box-shadow: 0 0 30px rgba(168, 85, 247, 0.2), inset 0 0 20px rgba(168, 85, 247, 0.05);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
     margin: 40px 0;
-    border: 2px solid #a855f7;
-    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(8px);
 }
 
 .project-detail-section h2 {
-    color: #a855f7;
+    color: var(--accent-strong);
+    font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 1.8em;
     margin-bottom: 25px;
-    text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
-    letter-spacing: 1px;
+    letter-spacing: 0.02em;
 }
 
 .project-detail-section h3 {
-    color: #a3e7ff;
-    font-size: 1.3em;
+    color: var(--accent);
+    font-size: 1.25em;
     margin: 20px 0 10px 0;
-    text-shadow: 0 0 10px rgba(163, 231, 255, 0.3);
 }
 
 .project-detail-section p {
-    background: linear-gradient(90deg, #ffffff 0%, #a3e7ff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-muted);
     line-height: 1.8;
     margin-bottom: 15px;
     font-size: 1em;
 }
 
 .project-detail-section a {
-    color: #ec4899;
+    color: var(--accent);
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s;
+    transition: all 0.25s ease;
 }
 
 .project-detail-section a:hover {
-    color: #a855f7;
-    text-shadow: 0 0 10px rgba(236, 72, 153, 0.6);
+    color: var(--accent-strong);
 }
 
 .project-detail-section ul {
@@ -415,7 +506,7 @@ footer a:hover {
 }
 
 .project-detail-section li {
-    color: #d0d0d0;
+    color: var(--text-muted);
     margin: 10px 0;
     padding-left: 20px;
     position: relative;
@@ -423,18 +514,11 @@ footer a:hover {
 
 .project-detail-section li::before {
     content: '▸';
-    color: #ec4899;
+    color: var(--accent);
     font-weight: bold;
     position: absolute;
     left: 0;
 }
-
-/* ======================================== 
-   FEATURES GRID (2-column grid on detail pages)
-   ======================================== 
-   Used in project detail pages to display feature highlights
-   Each feature has title, description, and pink bullet
-   ======================================== */
 
 .features-grid {
     display: grid;
@@ -444,41 +528,31 @@ footer a:hover {
 }
 
 .feature-item {
-    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(236, 72, 153, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(248, 236, 240, 0.9) 100%);
     padding: 25px;
-    border: 1px solid rgba(168, 85, 247, 0.3);
-    border-radius: 0;
-    transition: all 0.3s;
+    border: 1px solid rgba(124, 61, 84, 0.15);
+    border-radius: 16px;
+    transition: all 0.25s ease;
+    box-shadow: 0 10px 24px rgba(87, 45, 63, 0.06);
 }
 
 .feature-item:hover {
-    border-color: #ec4899;
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.2), inset 0 0 15px rgba(236, 72, 153, 0.1);
+    border-color: var(--accent);
     transform: translateY(-3px);
+    box-shadow: 0 14px 28px rgba(87, 45, 63, 0.1);
 }
 
 .feature-item h3 {
-    color: #ec4899;
+    color: var(--accent);
     font-size: 1.2em;
     margin-bottom: 10px;
-    text-shadow: 0 0 10px rgba(236, 72, 153, 0.4);
 }
 
 .feature-item p {
-    background: linear-gradient(90deg, #ffffff 0%, #a3e7ff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-muted);
     font-size: 0.95em;
     margin: 0;
 }
-
-/* ======================================== 
-   TECHNICAL INFO GRID (3-column grid)
-   ======================================== 
-   Used in project detail pages for tech stack, architecture, requirements
-   Matches feature-item styling with purple accents
-   ======================================== */
 
 .tech-info {
     display: grid;
@@ -488,29 +562,30 @@ footer a:hover {
 }
 
 .tech-item {
-    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(236, 72, 153, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(248, 236, 240, 0.9) 100%);
     padding: 25px;
-    border: 1px solid rgba(168, 85, 247, 0.3);
-    border-radius: 0;
+    border: 1px solid rgba(124, 61, 84, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 10px 24px rgba(87, 45, 63, 0.06);
 }
 
 .tech-item h3 {
-    color: #a855f7;
+    color: var(--accent-strong);
     font-size: 1.15em;
     margin-bottom: 15px;
-    border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+    border-bottom: 1px solid rgba(124, 61, 84, 0.15);
     padding-bottom: 10px;
 }
 
 h4 {
-    color: #c297ff;
+    color: var(--accent);
     font-size: 0.95em;
     margin-top: 20px;
     margin-bottom: 10px;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    border-left: 3px solid #8767b3;
+    border-left: 3px solid var(--accent-soft);
     padding-left: 12px;
 }
 
@@ -520,7 +595,7 @@ h4 {
 }
 
 .tech-item li {
-    color: #d0d0d0;
+    color: var(--text-muted);
     margin: 10px 0;
     padding-left: 20px;
     position: relative;
@@ -528,29 +603,22 @@ h4 {
 
 .tech-item li::before {
     content: '▸';
-    color: #ec4899;
+    color: var(--accent);
     font-weight: bold;
     position: absolute;
     left: 0;
 }
 
 .tech-item li strong {
-    color: #a3e7ff;
+    color: var(--accent-strong);
 }
-
-/* ======================================== 
-   BUILD & INSTALLATION SECTION
-   ======================================== 
-   Code blocks and command snippets styling
-   Green text (#00ff88) for terminal commands
-   ======================================== */
 
 .get-started-content {
     font-size: 0.95em;
 }
 
 .get-started-content ol {
-    color: #d0d0d0;
+    color: var(--text-muted);
     padding-left: 25px;
     margin: 15px 0;
 }
@@ -561,77 +629,65 @@ h4 {
 }
 
 .get-started-content code {
-    background: rgba(0, 255, 136, 0.05);
-    color: #00ff88;
+    background: rgba(124, 61, 84, 0.08);
+    color: var(--accent-strong);
     padding: 2px 6px;
-    border-radius: 3px;
+    border-radius: 4px;
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
-    text-shadow: 0 0 5px rgba(0, 255, 136, 0.3);
     font-size: 0.9em;
 }
 
 .code-block {
     display: block;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(0, 255, 136, 0.2);
-    color: #00ff88;
+    background: rgba(53, 33, 47, 0.06);
+    border: 1px solid rgba(124, 61, 84, 0.14);
+    color: var(--accent-strong);
     padding: 15px;
     margin: 15px 0;
-    border-radius: 0;
+    border-radius: 12px;
     overflow-x: auto;
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
-    text-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
 }
 
-/* CTA Section */
 .cta-section {
-    background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(236, 72, 153, 0.1) 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(248, 236, 240, 0.95) 100%);
     padding: 50px 40px;
-    border: 2px solid #a855f7;
+    border: 1px solid rgba(124, 61, 84, 0.16);
     text-align: center;
     margin: 50px 0;
-    border-radius: 0;
-    box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
 }
 
 .cta-button.primary {
     display: inline-block;
-    background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+    background: linear-gradient(135deg, #a55d72 0%, #7f4257 100%);
     color: #ffffff;
     padding: 15px 40px;
-    border: 2px solid #ec4899;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     text-decoration: none;
     font-weight: 700;
-    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
-    transition: all 0.3s;
-    box-shadow: 0 0 25px rgba(236, 72, 153, 0.5);
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    transition: all 0.25s ease;
+    box-shadow: 0 12px 26px rgba(80, 35, 54, 0.22);
     text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 1.05em;
+    letter-spacing: 0.12em;
+    font-size: 1.0em;
+    border-radius: 999px;
 }
 
 .cta-button.primary:hover {
-    transform: translateY(-3px) skewX(-2deg);
-    box-shadow: 0 0 40px rgba(236, 72, 153, 0.7), inset 0 0 20px rgba(236, 72, 153, 0.2);
-    background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 34px rgba(80, 35, 54, 0.28);
+    background: linear-gradient(135deg, #985464 0%, #6e3b4d 100%);
 }
 
 .cta-subtitle {
-    color: #a3e7ff;
+    color: var(--text-muted);
     margin-top: 15px;
     font-size: 0.95em;
-    text-shadow: 0 0 10px rgba(163, 231, 255, 0.3);
 }
 
-/* ======================================== 
-   RESPONSIVE DESIGN BREAKPOINTS
-   ======================================== 
-   Mobile-first approach
-   Breakpoints: 1024px (tablet), 768px (mobile), 480px (small phone)
-   Adjust padding, font sizes, and grid columns for smaller screens
-   ======================================== */
-
-/* Responsive Design */
 @media (max-width: 1024px) {
     header.hero {
         padding: 60px 50px;
@@ -650,6 +706,15 @@ h4 {
     header.hero {
         padding: 50px 30px;
         min-height: 350px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .hero-profile {
+        width: 160px;
+        height: 160px;
+        margin-right: 0;
     }
 
     header.hero h1 {
@@ -701,6 +766,28 @@ h4 {
     header.hero {
         padding: 40px 20px;
         min-height: 300px;
+    }
+    .hero-content--split {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero-side {
+        width: 100%;
+        align-items: flex-start;
+        min-width: 0;
+    }
+
+    .hero-contact {
+        max-width: 100%;
+    }
+    .hero-content {
+        padding: 1.2rem 1rem;
+    }
+
+    .hero-profile {
+        width: 132px;
+        height: 132px;
     }
 
     header.hero h1 {
